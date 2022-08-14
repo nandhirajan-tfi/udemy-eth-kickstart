@@ -13,7 +13,7 @@ fs.ensureDirSync(buildPath); // Check if directory is exists
 
 for (let contract in output) {
     fs.outputJSONSync(
-        path.resolve(buildPath, contract + ".json"),
+        path.resolve(buildPath, contract.replace(":", "") + ".json"),
         output[contract]
     );
 }
