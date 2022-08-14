@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Form, Button, Input, Message } from "semantic-ui-react";
+import { Link, Router } from "../../routes";
 
 import Layout from "../../components/Layout";
 import factory from "../../ethereum/factory";
@@ -20,7 +21,7 @@ const CampaignNew = props => {
                 .send({
                     from: accounts[0]
                 });
-
+            Router.pushRoute("/");
         }
         catch (err) {
             setErrMsg(err.message);

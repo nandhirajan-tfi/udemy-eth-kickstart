@@ -3,6 +3,7 @@ import { Card, Button } from "semantic-ui-react";
 
 import factory from "../ethereum/factory";
 import Layout from "../components/Layout";
+import { Link } from "../routes";
 
 const CampaignIndex = (props) => {
     const [campaigns, setCampaigns] = useState([]);
@@ -20,7 +21,11 @@ const CampaignIndex = (props) => {
         const items = campaigns.map(address => {
             return {
                 header: address,
-                description: <a> View Campaigns </a>,
+                description: (
+                    <Link route={`/campaign/${address}`}>
+                        <a> View Campaigns </a>
+                    </Link>
+                ),
                 fluid: true
             }
         });
@@ -38,12 +43,16 @@ const CampaignIndex = (props) => {
             <script src="https://cdn.jsdelivr.net/npm/semantic-ui-react/dist/umd/semantic-ui-react.min.js"></script>
             <h3>Open Campaigns</h3>
 
-            <Button
-                content="Create Campaign"
-                icon="add circle"
-                primary
-                floated="right"
-            />
+            <Link route="/campaign/new">
+                <a>  {/* Anchor tag is to allow right click   */}
+                    <Button
+                        content="Create Campaign"
+                        icon="add circle"
+                        primary
+                        floated="right"
+                    />
+                </a>
+            </Link>
             {renderCampaigns()}
         </Layout>
     );
