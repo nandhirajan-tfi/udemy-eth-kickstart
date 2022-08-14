@@ -3,6 +3,7 @@ import { Button } from "semantic-ui-react";
 
 import Layout from "../../../components/Layout";
 import { Link } from "../../../routes";
+import Campaign from "../../../ethereum/campaign";
 
 const RequestIndex = props => {
     return (
@@ -19,9 +20,19 @@ const RequestIndex = props => {
 
 RequestIndex.getInitialProps = async (context) => {
     const address = context.query.address;
+    const campaign = Campaign(address);
 
+    const requestCount = await campaign.methods.getRequestsCount().call();
+    const requests = await Promise.all(
+        Array(parseInt(requestCount)).fill().map((element, idx) => {
+            return campaign.methods.requests(idx).call();
+        })
+    );
+    console.log(requests);
     return {
-        address
+        address,
+        requests,
+        requestCount
     };
 }
 
