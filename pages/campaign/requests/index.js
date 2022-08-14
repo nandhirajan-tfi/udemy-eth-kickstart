@@ -1,11 +1,12 @@
 import React from "react";
-import { Button } from "semantic-ui-react";
+import { Button, Table } from "semantic-ui-react";
 
 import Layout from "../../../components/Layout";
 import { Link } from "../../../routes";
 import Campaign from "../../../ethereum/campaign";
 
 const RequestIndex = props => {
+    const { Header, Row, HeaderCell, Body } = Table;
     return (
         <Layout>
             <h3>Request Index</h3>
@@ -14,6 +15,19 @@ const RequestIndex = props => {
                     <Button primary>Add Request</Button>
                 </a>
             </Link>
+            <Table>
+                <Header>
+                    <Row>
+                        <HeaderCell>ID</HeaderCell>
+                        <HeaderCell>Description</HeaderCell>
+                        <HeaderCell>Amount</HeaderCell>
+                        <HeaderCell>Recipient</HeaderCell>
+                        <HeaderCell>Approval Count</HeaderCell>
+                        <HeaderCell>Approve</HeaderCell>
+                        <HeaderCell>Finalize</HeaderCell>
+                    </Row>
+                </Header>
+            </Table>
         </Layout>
     )
 }
