@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Card } from "semantic-ui-react";
+import { Card, Button } from "semantic-ui-react";
 import factory from "../ethereum/factory";
 
 const CampaignIndex = (props) => {
@@ -16,7 +16,6 @@ const CampaignIndex = (props) => {
 
     const renderCampaigns = () => {
         const items = campaigns.map(address => {
-            console.log("Campaigns");
             return {
                 header: address,
                 description: <a> View Campaigns </a>,
@@ -24,22 +23,25 @@ const CampaignIndex = (props) => {
             }
         });
 
-        return (
-            <div>
-                <link
-                    async
-                    rel="stylesheet"
-                    href="https://cdn.jsdelivr.net/npm/semantic-ui@2/dist/semantic.min.css"
-                />
-                <script src="https://cdn.jsdelivr.net/npm/semantic-ui-react/dist/umd/semantic-ui-react.min.js"></script>
-                <Card.Group items={items} />
-            </div>
-
-        )
-
+        return (<Card.Group items={items} />);
     }
 
-    return renderCampaigns();
+    return (
+        <div>
+            <link
+                async
+                rel="stylesheet"
+                href="https://cdn.jsdelivr.net/npm/semantic-ui@2/dist/semantic.min.css"
+            />
+            <script src="https://cdn.jsdelivr.net/npm/semantic-ui-react/dist/umd/semantic-ui-react.min.js"></script>
+            {renderCampaigns()}
+            <Button
+                content="Create Campaign"
+                icon="add circle"
+                primary
+            />
+        </div>
+    );
 }
 
 // export async function getInitialProps() {
