@@ -4,9 +4,21 @@ import { Button, Table } from "semantic-ui-react";
 import Layout from "../../../components/Layout";
 import { Link } from "../../../routes";
 import Campaign from "../../../ethereum/campaign";
+import RequestRow from "../../../components/RequestRow";
 
 const RequestIndex = props => {
     const { Header, Row, HeaderCell, Body } = Table;
+
+    const renderRows = () => {
+        return props.requests.map((request, idx) => {
+            return <RequestRow
+                key={idx}
+                request={request}
+                address={props.address}
+            />
+        })
+    }
+
     return (
         <Layout>
             <h3>Request Index</h3>
@@ -27,6 +39,9 @@ const RequestIndex = props => {
                         <HeaderCell>Finalize</HeaderCell>
                     </Row>
                 </Header>
+                <Body>
+                    {renderRows()}
+                </Body>
             </Table>
         </Layout>
     )
