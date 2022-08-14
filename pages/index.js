@@ -20,14 +20,26 @@ const CampaignIndex = (props) => {
             return {
                 header: address,
                 description: <a> View Campaigns </a>,
-                flud: true
+                fluid: true
             }
         });
 
-        return <Card.Group items={items} />
+        return (
+            <div>
+                <link
+                    async
+                    rel="stylesheet"
+                    href="https://cdn.jsdelivr.net/npm/semantic-ui@2/dist/semantic.min.css"
+                />
+                <script src="https://cdn.jsdelivr.net/npm/semantic-ui-react/dist/umd/semantic-ui-react.min.js"></script>
+                <Card.Group items={items} />
+            </div>
+
+        )
+
     }
 
-    return renderCampaigns()
+    return renderCampaigns();
 }
 
 // export async function getInitialProps() {
