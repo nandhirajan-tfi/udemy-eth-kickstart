@@ -37,12 +37,14 @@ const CampaignIndex = (props) => {
             />
             <script src="https://cdn.jsdelivr.net/npm/semantic-ui-react/dist/umd/semantic-ui-react.min.js"></script>
             <h3>Open Campaigns</h3>
-            {renderCampaigns()}
+
             <Button
                 content="Create Campaign"
                 icon="add circle"
                 primary
+                floated="right"
             />
+            {renderCampaigns()}
         </Layout>
     );
 }
