@@ -13,8 +13,10 @@ const RequestIndex = props => {
         return props.requests.map((request, idx) => {
             return <RequestRow
                 key={idx}
+                id={idx}
                 request={request}
                 address={props.address}
+                approversCount={props.approversCount}
             />
         })
     }
@@ -52,16 +54,19 @@ RequestIndex.getInitialProps = async (context) => {
     const campaign = Campaign(address);
 
     const requestCount = await campaign.methods.getRequestsCount().call();
+    const approversCount = await campaign.methods.approversCount().call();
+
     const requests = await Promise.all(
         Array(parseInt(requestCount)).fill().map((element, idx) => {
             return campaign.methods.requests(idx).call();
         })
     );
-    console.log(requests);
+
     return {
         address,
         requests,
-        requestCount
+        requestCount,
+        approversCount
     };
 }
 
