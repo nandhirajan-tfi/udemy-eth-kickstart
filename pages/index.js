@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Card } from "semantic-ui-react";
 import factory from "../ethereum/factory";
 
 const CampaignIndex = (props) => {
@@ -13,7 +14,20 @@ const CampaignIndex = (props) => {
         setCampaigns(campaigns);
     }
 
-    return <h1>Welcome to New Campaign Page {campaigns}</h1>
+    const renderCampaigns = () => {
+        const items = campaigns.map(address => {
+            console.log("Campaigns");
+            return {
+                header: address,
+                description: <a> View Campaigns </a>,
+                flud: true
+            }
+        });
+
+        return <Card.Group items={items} />
+    }
+
+    return renderCampaigns()
 }
 
 // export async function getInitialProps() {
