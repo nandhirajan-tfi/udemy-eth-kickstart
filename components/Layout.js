@@ -1,9 +1,11 @@
 import React from "react";
 
+import Header from "./Header";
+
 const Layout = props => {
     return (
         <div>
-            <h1> I am a header </h1>
+            <Header />
             {props.children}
             <h1> I am a footer </h1>
         </div>
