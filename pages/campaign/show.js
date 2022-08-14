@@ -56,19 +56,28 @@ const CampaignShow = props => {
         <Layout>
             <h3>Campaign Show</h3>
             <Grid>
-                <Grid.Column width={10}>
-                    {renderCards()}
-                    <Link route={`/campaign/${address}/requests`}>
-                        <a>
-                            <Button primary>View Requests</Button>
-                        </a>
-                    </Link>
-                </Grid.Column>
-                <Grid.Column width={6}>
-                    <ContributeForm address={address} />
-                </Grid.Column>
+                <Grid.Row>
+                    <Grid.Column width={10}>
+                        {renderCards()}
+
+                    </Grid.Column>
+
+                    <Grid.Column width={6}>
+                        <ContributeForm address={address} />
+                    </Grid.Column>
+                </Grid.Row>
+
+                <Grid.Row>
+                    <Grid.Column>
+                        <Link route={`/campaign/${address}/requests`}>
+                            <a>
+                                <Button primary>View Requests</Button>
+                            </a>
+                        </Link>
+                    </Grid.Column>
+                </Grid.Row>
             </Grid>
-        </Layout>
+        </Layout >
     )
 }
 
