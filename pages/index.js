@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import factory from "../ethereum/factory";
 
-const CampaignIndex = () => {
+const CampaignIndex = (props) => {
     const [campaigns, setCampaigns] = useState([]);
 
     useEffect(() => {
@@ -15,5 +15,13 @@ const CampaignIndex = () => {
 
     return <h1>Welcome to New Campaign Page {campaigns}</h1>
 }
+
+// export async function getInitialProps() {
+//     const campaigns = await factory.methods.getDeployedCampaigns().call();
+//     console.log("Campaings ", campaigns)
+//     return {
+//         props: { campaigns },
+//     };
+// }
 
 export default CampaignIndex;
