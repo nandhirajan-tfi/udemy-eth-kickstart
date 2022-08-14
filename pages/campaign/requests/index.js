@@ -26,7 +26,7 @@ const RequestIndex = props => {
             <h3>Request Index</h3>
             <Link route={`/campaign/${props.address}/requests/new`}>
                 <a>
-                    <Button primary>Add Request</Button>
+                    <Button primary floated="right" style={{ marginBottom: "10px" }}>Add Request</Button>
                 </a>
             </Link>
             <Table>
@@ -45,6 +45,9 @@ const RequestIndex = props => {
                     {renderRows()}
                 </Body>
             </Table>
+            <div>
+                Found {props.requestCount} requests.
+            </div>
         </Layout>
     )
 }
